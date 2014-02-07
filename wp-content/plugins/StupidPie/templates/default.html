@@ -11,26 +11,27 @@
 		<div class="entry-content">
 			<p>
 				{% for index, item in api %}
-				{% if index < 2 %}
+				{% if index < 3 %}
 					{{item.title  | remove '...' | trim | strtolower | ucfirst }}, {{item.description | remove '...' | trim | strtolower | ucfirst }}.
 				{% endif %}
 				{% endfor %}
 			</p>
 			<p>
 				<img src="{{ images.2.mediaurl }}" alt="{{images.2.title}}">
-			</p><br />
-<h1 align="center"><u>Read More Review Here</u><br /><img src="http://2.bp.blogspot.com/-Xjib9i7ZguM/UNfkGdHMy_I/AAAAAAAAAF0/gvGSkwBPu5E/s1600/ArrowDownBlueGloss.gif" alt="Go"/></h1>
-<p align="center">
-					<a href="http://www.amazon.com/mn/search/?_encoding=UTF8&tag=clotingsshopp-20&linkCode=ur2&camp=1789&creative=390957&field-keywords={{ term | ucwords }}&url=search-alias%3Daps" target="_blank" rel="nofollow"><img src="http://3.bp.blogspot.com/-CtKAZ88TiP4/URo1ktanH3I/AAAAAAAAAII/Medg8tTvMLQ/s1600/buynow-big.gif" alt="Click To View Product"/></a>
-				</p>
+			</p>
 			<p>
 				{% for index, item in api %}
-				{% if index > 2 %}{% if index < 5 %}
+				{% if index > 2 %}{% if index < 6 %}
 					{{item.title  | remove '...' | trim | strtolower | ucfirst }}, {{item.description | remove '...' | trim | strtolower | ucfirst }}.
 				{% endif %}{% endif %}
 				{% endfor %}
 			</p>
-	
+			{% if videos.0.link != '' %}
+			<p>			
+				<iframe class="youtube-player" type="text/html" width="560" height="315" src="http://www.youtube.com/embed/{{ videos.0.link | get_video_id }}" frameborder="0">
+				</iframe>			
+			</p>
+			{% endif %}
 			<p>
 				{% for index, item in api %}
 				{% if index > 6 %}
@@ -49,9 +50,21 @@
 			{% endfor %}
 	  	</div><!-- end .entry-content -->
 
+	  	<div class="entry-content">
+	  		References:
+	  		<ul>
+			{% for index, item in api %}
+			{% if index < 3 %}
+				<li><a href="{{ item.link }}" rel="nofollow">{{ item.link | host }}</a></li>
+			{% endif %}
+			{% endfor %}
+			</ul>
+	  	</div><!-- end .entry-content -->
+
 	</div><!--end .entry-wrap-->
 	
 		<footer class="entry-meta singlepost">
+			<p><span>Posted by:</span> <a rel="author" title="Posts by jake" href="/author/jake/">jake</a>			<span>| Conversation:</span> <a title="Comment on Hello world!" class="comments-link" href="/?random">1 comment</a>			<span>| Category:</span> <a rel="category tag" title="View all posts" href="/">General</a>						<span> </span></p>
 			
 		</footer><!-- end .entry-meta -->
 </article>
